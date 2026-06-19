@@ -28,6 +28,10 @@ const store = new MongoDBStore({
 });
 const csrfProtection = csrf();
 
+if (!fs.existsSync('images')) {
+  fs.mkdirSync('images');
+}
+
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'images');
